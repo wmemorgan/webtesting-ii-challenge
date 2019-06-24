@@ -1,12 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { render } from '@testing-library/react'
 import '@testing-library/react/cleanup-after-each'
 
 // Components
 import App from './App';
 import Display from './components/ScoreBoardComponents/Display'
-//import Dashboard from './components/Dashboard'
+import Dashboard from './components/ScoreBoardComponents/Dashboard'
 
 describe('Test <App /> component', () => {
   it('<App /> renders without crashing', () => {
@@ -17,9 +17,9 @@ describe('Test <App /> component', () => {
     render(<Display />)
   })
 
-  // xit('Dashboard renders without crashing', () => {
-  //   render(<Dashboard />)
-  // })
+  it('<Dashboard /> renders without crashing', () => {
+    render(<Dashboard />)
+  })
 })
 
 
