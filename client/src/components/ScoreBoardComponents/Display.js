@@ -1,13 +1,51 @@
 import React, { Component } from 'react'
-
+import { EventEmitter } from '../../utils/events'
 import * as S from './ScoreboardStyles'
 
 class Display extends Component {
-  state = {
-    balls: 0,
-    strikes: 0,
-    fouls: 0,
-    outs: 0
+  constructor(props) {
+    super(props)
+    this.state = {
+      balls: 0,
+      strikes: 0,
+      fouls: 0,
+      outs: 0,
+      walks: 0
+    }
+
+    EventEmitter.subscribe('addBall', event => this.addBall(event))
+    EventEmitter.subscribe('addStrike', event => this.addStrike(event))
+  }
+
+  addBall = () => {
+    if (this.state.balls < 4) {
+      this.setState(prevState => (
+        { balls: prevState.balls + 1 }
+      ), () => console.log(this.state))
+    } else {
+      this.setState({
+        balls: 0,
+        strikes: 0,
+        fouls: 0
+      })
+    }
+  }
+
+  addStrike = () => {
+    if (this.state.strikes < 3) {
+      this.setState(prevState => (
+        { strikes: prevState.strikes + 1 }
+      ))
+    } else {
+      this.setState(prevState => (
+        {
+          balls: 0,
+          strikes: 0,
+          fouls: 0,
+          outs: prevState.outs + 1
+        }
+      ))
+    }
   }
 
   render() {
@@ -28,7 +66,7 @@ class Display extends Component {
               Strikes
             </S.StatCategory>
             <S.StatDisplay>
-              {this.state.balls}
+              {this.state.strikes}
             </S.StatDisplay>
           </S.StatWrapper>
           <S.StatWrapper>
@@ -36,7 +74,7 @@ class Display extends Component {
               Outs
             </S.StatCategory>
             <S.StatDisplay>
-              {this.state.balls}
+              {this.state.outs}
             </S.StatDisplay>
           </S.StatWrapper>
         </S.StatContainer>
