@@ -4,7 +4,7 @@ import '@testing-library/react/cleanup-after-each'
 
 import Display from './Display'
 
-describe('Test Display component', () => {
+describe('Test <Display /> component', () => {
   it('should render without errors', () => {
     render(<Display />)
   })
