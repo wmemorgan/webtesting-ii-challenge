@@ -48,6 +48,20 @@ class Display extends Component {
     }
   }
 
+  addFoul = () => {
+    if (this.state.strikes < 2) {
+      this.setState(prevState => (
+        { strikes: prevState.strikes + 1, 
+          fouls: prevState.fouls + 1
+        }
+      ), () => console.log(this.state))
+    } else {
+      this.setState(prevState => (
+        { fouls: prevState.fouls + 1 }
+      ), () => console.log(this.state))
+    }
+  }
+
   render() {
     return (
       <S.ScoreboardContainer>
