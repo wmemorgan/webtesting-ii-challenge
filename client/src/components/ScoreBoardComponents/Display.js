@@ -68,7 +68,12 @@ class Display extends Component {
 
   addHit = () => {
     this.setState(prevState => (
-      { hits: prevState.hits + 1 }
+      { 
+        balls: 0,
+        strikes: 0,
+        fouls: 0,
+        hits: prevState.hits + 1 
+      }
     ))
   }
 
