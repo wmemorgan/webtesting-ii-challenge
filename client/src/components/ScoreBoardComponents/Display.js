@@ -15,10 +15,11 @@ class Display extends Component {
 
     EventEmitter.subscribe('addBall', event => this.addBall(event))
     EventEmitter.subscribe('addStrike', event => this.addStrike(event))
+    EventEmitter.subscribe('addFoul', event => this.addFoul(event))
   }
 
   addBall = () => {
-    if (this.state.balls < 4) {
+    if (this.state.balls <= 3) {
       this.setState(prevState => (
         { balls: prevState.balls + 1 }
       ), () => console.log(this.state))
@@ -32,7 +33,7 @@ class Display extends Component {
   }
 
   addStrike = () => {
-    if (this.state.strikes < 3) {
+    if (this.state.strikes <= 2) {
       this.setState(prevState => (
         { strikes: prevState.strikes + 1 }
       ))
@@ -60,6 +61,20 @@ class Display extends Component {
         { fouls: prevState.fouls + 1 }
       ), () => console.log(this.state))
     }
+  }
+
+  componentDidMount() {
+
+  }
+
+  componentDidUpdate() {
+    if (this.state.balls === 4) {
+      this.addBall()
+    }
+    if (this.state.strikes === 3) {
+      this.addStrike()
+    }
+
   }
 
   render() {
