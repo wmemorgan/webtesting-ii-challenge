@@ -48,6 +48,6 @@ export const DashBoardContainer = styled.div`
   margin: 10px auto;
 
   button {
-    width: 150px;
+    width: 120px;
   }
 `

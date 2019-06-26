@@ -10,12 +10,15 @@ class Display extends Component {
       strikes: 0,
       fouls: 0,
       outs: 0,
+      hits: 0,
       walks: 0
     }
 
     EventEmitter.subscribe('addBall', event => this.addBall(event))
     EventEmitter.subscribe('addStrike', event => this.addStrike(event))
     EventEmitter.subscribe('addFoul', event => this.addFoul(event))
+    EventEmitter.subscribe('addHit', event => this.addHit(event))
+
   }
 
   addBall = () => {
@@ -63,8 +66,10 @@ class Display extends Component {
     }
   }
 
-  componentDidMount() {
-
+  addHit = () => {
+    this.setState(prevState => (
+      { hits: prevState.hits + 1 }
+    ))
   }
 
   componentDidUpdate() {
@@ -104,6 +109,14 @@ class Display extends Component {
             </S.StatCategory>
             <S.StatDisplay>
               {this.state.outs}
+            </S.StatDisplay>
+          </S.StatWrapper>
+          <S.StatWrapper>
+            <S.StatCategory>
+              Hits
+            </S.StatCategory>
+            <S.StatDisplay>
+              {this.state.hits}
             </S.StatDisplay>
           </S.StatWrapper>
         </S.StatContainer>

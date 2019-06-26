@@ -9,7 +9,8 @@ const theme = {
     emphasis: '#212121',
     darkText: '#595959',
     lightText: '#FFFFFF',
-    danger: 'red'
+    danger: 'red',
+    success: '#507185'
   },
 
   colorScheme: {

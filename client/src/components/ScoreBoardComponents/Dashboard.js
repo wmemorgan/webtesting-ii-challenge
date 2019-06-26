@@ -16,12 +16,17 @@ const addFoul = () => {
   EventEmitter.dispatch('addFoul')
 }
 
+const addHit = () => {
+  EventEmitter.dispatch('addHit')
+}
+
 const Dashboard = () => {
   return (
     <S.DashBoardContainer>
       <Button onClick={addBall} primary>Ball</Button>
       <Button onClick={addStrike} delete>Strike</Button>
       <Button onClick={addFoul} update>Foul</Button>
+      <Button onClick={addHit} success>Hit</Button>
     </S.DashBoardContainer>
   )
 }

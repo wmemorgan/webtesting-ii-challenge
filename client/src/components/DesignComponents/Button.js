@@ -41,6 +41,13 @@ const Button = styled.button`
       background: ${color.danger}; 
   `}
 
+  ${props =>
+    props.success &&
+    css`
+      color: ${color.lightText};
+      background: ${color.success}; 
+  `}
+
 
 `
 

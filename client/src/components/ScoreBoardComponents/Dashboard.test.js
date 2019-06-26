@@ -35,4 +35,12 @@ describe('Test buttons', () => {
     fireEvent.click(foulButton, 'click')
 
   })
+
+  it('Hit button', () => {
+    const { getByText } = render(<Dashboard />)
+    const hitButton = getByText(/hit/i)
+
+    fireEvent.click(hitButton, 'click')
+
+  })
 })
