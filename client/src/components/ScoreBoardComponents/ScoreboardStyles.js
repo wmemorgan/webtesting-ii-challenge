@@ -40,3 +40,14 @@ export const StatDisplay = styled.div`
       color: ${color.accent};
   `}
 `
+
+export const DashBoardContainer = styled.div`
+  width: 100%;
+  max-width: 600px;
+  ${flex('row','center','space-between')};
+  margin: 10px auto;
+
+  button {
+    width: 150px;
+  }
+`

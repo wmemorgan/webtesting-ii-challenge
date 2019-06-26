@@ -16,6 +16,7 @@ const Button = styled.button`
   ${props =>
     props.primary &&
     css`
+      color: ${color.lightText};
       background: ${color.primaryColor}; 
   `}
 
